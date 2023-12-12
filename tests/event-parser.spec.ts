@@ -1,9 +1,10 @@
 import { expect, test } from 'vitest';
-import { EventParser } from '../app';
+import { EventParser } from '@app/event-parser';
+import { Match } from '@app/types';
 
 test('match parser [SOCCER]', () => {
   const match = {
-    sport: 'soccer',
+    sport: 'soccer' as const,
     participant1: 'Chelsea',
     participant2: 'Arsenal',
     score: '2:1',
@@ -33,7 +34,7 @@ test('match parser [SOCCER]', () => {
 
 test('match parser [VOLLEYBALL]', () => {
   const match = {
-    sport: 'volleyball',
+    sport: 'volleyball' as const,
     participant1: 'Germany',
     participant2: 'France',
     score: '3:0,25:23,25:19,25:21',
@@ -50,7 +51,7 @@ test('match parser [VOLLEYBALL]', () => {
 
 test('match parser [HANDBALL]', () => {
   const match = {
-    sport: 'handball',
+    sport: 'handball' as const,
     participant1: 'Pogoń Szczeciń',
     participant2: 'Azoty Puławy',
     score: '34:26',
@@ -64,7 +65,7 @@ test('match parser [HANDBALL]', () => {
 });
 
 test('match parser [BASKETBALL]', () => {
-  const match = {
+  const match: Match = {
     sport: 'basketball',
     participant1: 'GKS Tychy',
     participant2: 'GKS Katowice',
@@ -83,7 +84,7 @@ test('match parser [BASKETBALL]', () => {
 
 test('match parser [TENNIS]', () => {
   const match = {
-    sport: 'tennis',
+    sport: 'tennis' as const,
     participant1: 'Maria Sharapova',
     participant2: 'Serena Williams',
     score: '2:1,7:6,6:3,6:7',
@@ -99,11 +100,9 @@ test('match parser [TENNIS]', () => {
 test('match parser [SKI JUMPING]', () => {
   const match = {
     sport: 'ski jumping',
-  };
+  } as unknown as Match;
   const parser = new EventParser();
-  const name = parser.makeEventName(match);
-  const score = parser.formatScore(match);
 
-  expect(name).to.equal('Exception: invalid sport');
-  expect(score).to.equal('Exception: invalid sport');
+  expect(() => parser.makeEventName(match)).toThrow(new Error('Invalid sport'));
+  expect(() => parser.formatScore(match)).toThrow(new Error('Invalid sport'));
 });
