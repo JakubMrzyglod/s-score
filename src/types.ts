@@ -1,4 +1,4 @@
-export type Match<T extends Sport = Sport> = {
+export type Match<T extends Sport> = {
   participant1: string;
   participant2: string;
   sport: T;

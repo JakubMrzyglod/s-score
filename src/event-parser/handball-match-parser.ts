@@ -1,5 +1,5 @@
 import { Match } from '../types';
-import { MatchParser } from './match-parser-factory';
+import { MatchParser } from './match-parser';
 
 export class HandballMatchParser extends MatchParser<'handball'> {
   parseMatchName(match: Match<'handball'>): string {

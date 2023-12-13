@@ -4,10 +4,7 @@ import { HandballMatchParser } from './handball-match-parser';
 import { TennisMatchParser } from './tennis-match-parser';
 import { VolleyballMatchParser } from './VolleyballMatchParser';
 import { SoccerMatchParser } from './soccer-match-parser';
-export abstract class MatchParser<T extends Sport> {
-  abstract parseMatchName(match: Match<T>): string;
-  abstract parseScore(match: Match<T>): string;
-}
+import { MatchParser } from './match-parser';
 
 export class MatchParserFactory {
   static create<T extends Sport>(match: Match<T>): MatchParser<Sport> {

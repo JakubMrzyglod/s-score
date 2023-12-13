@@ -90,7 +90,7 @@ test('match parser [TENNIS]', () => {
 test('match parser [SKI JUMPING]', () => {
   const match = {
     sport: 'ski jumping',
-  } as unknown as Match;
+  } as unknown as Match<Sport>;
   const result = parseMatches([match]);
   expect(result).toEqual({
     invalidMatches: [{ match, reason: 'Invalid sport' }],

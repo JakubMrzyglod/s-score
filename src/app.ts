@@ -1,7 +1,7 @@
 import { parseMatches } from './matches-parser';
-import { Match } from './types';
+import { Match, Sport } from './types';
 
-const matches: Match[] = [
+const matches: Match<Sport>[] = [
   {
     sport: 'soccer',
     participant1: 'Chelsea',
@@ -37,7 +37,7 @@ const matches: Match[] = [
   },
   {
     sport: 'ski jumping',
-  } as unknown as Match,
+  } as unknown as Match<Sport>,
 ];
 
 const { matchesParsed } = parseMatches(matches);

@@ -1,5 +1,5 @@
 import { Match } from '../types';
-import { MatchParser } from './match-parser-factory';
+import { MatchParser } from './match-parser';
 
 export class BasketballMatchParser extends MatchParser<'basketball'> {
   parseMatchName(match: Match<'basketball'>): string {
