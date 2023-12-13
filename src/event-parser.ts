@@ -6,10 +6,10 @@ export class EventParser {
       case 'soccer':
       case 'volleyball':
       case 'basketball':
-        return match.participant1 + ' - ' + match.participant2;
+        return `${match.participant1} - ${match.participant2}`;
       case 'tennis':
       case 'handball':
-        return match.participant1 + ' vs ' + match.participant2;
+        return `${match.participant1} vs ${match.participant2}`;
       default:
         throw new Error('Invalid sport');
     }
