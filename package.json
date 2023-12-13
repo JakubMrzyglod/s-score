@@ -4,11 +4,15 @@
   "description": "- You have to refactor code in app.js file. Change it, split it, improve it, do it your own way! - You can use version of node you prefer - Code was tested in node 6, 10, 12, 14, 16, so it should be quite version agnostic at this stage - Application should print out the array of parsed events:",
   "main": "app.js",
   "scripts": {
+    "start": "ts-node --swc ./src/app.ts",
     "test": "vitest run --config ./vitest.config.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@swc/cli": "^0.1.63",
+    "@swc/core": "^1.3.100",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "unplugin-swc": "^1.4.4",
     "vite-tsconfig-paths": "^4.2.2",
