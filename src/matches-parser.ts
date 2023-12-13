@@ -1,7 +1,7 @@
-import { MatchParserFactory } from './event-parser';
+import { MatchParserFactory } from './event-parser/match-parser-factory';
 import { InvalidMatches, Match, ParsedMatch, Sport } from './types';
 
-export const parseMatches = (matches: Match<Sport>[]) => {
+export const parseMatches = (matches: Match[]) => {
   const matchesParsed: ParsedMatch[] = [];
   const invalidMatches: InvalidMatches[] = [];
 
