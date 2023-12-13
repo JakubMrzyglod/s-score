@@ -1,17 +1,17 @@
-export type Match = {
+export type Match<T extends Sport> = {
   participant1: string;
   participant2: string;
-} & (
-  | {
-      sport: 'soccer' | 'volleyball' | 'handball' | 'tennis';
-      score: string;
-    }
-  | {
-      sport: 'basketball';
-      score: [[string, string], [string, string]];
-    }
-);
+  sport: T;
+  score: T extends 'basketball' ? [[string, string], [string, string]] : string;
+};
+
+export type Sport =
+  | 'soccer'
+  | 'volleyball'
+  | 'handball'
+  | 'tennis'
+  | 'basketball';
 
 export type ParsedMatch = { name: string; score: string };
 
-export type InvalidMatches = { match: Match; reason: string };
+export type InvalidMatches = { match: unknown; reason: string };

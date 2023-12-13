@@ -1,15 +1,15 @@
-import { EventParser } from './event-parser';
-import { InvalidMatches, Match, ParsedMatch } from './types';
+import { MatchParserFactory } from './event-parser';
+import { InvalidMatches, Match, ParsedMatch, Sport } from './types';
 
-export const parseMatches = (matches: Match[]) => {
+export const parseMatches = (matches: Match<Sport>[]) => {
   const matchesParsed: ParsedMatch[] = [];
   const invalidMatches: InvalidMatches[] = [];
 
   matches.forEach((match) => {
     try {
-      const parser = new EventParser();
-      const name = parser.makeEventName(match);
-      const score = parser.formatScore(match);
+      const parser = MatchParserFactory.create(match);
+      const name = parser.parseMatchName(match);
+      const score = parser.parseScore(match);
 
       matchesParsed.push({
         name,
